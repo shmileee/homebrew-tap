@@ -5,20 +5,28 @@
 class GithubToTerraform < Formula
   desc "Get current GitHub configuration and create Terraform code for it"
   homepage "https://github.com/shmileee/github-to-terraform"
-  version "0.0.1"
+  version "0.0.2"
   bottle :unneeded
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/shmileee/github-to-terraform/releases/download/v0.0.1/github-to-terraform_0.0.1_Darwin_x86_64.tar.gz"
-      sha256 "2e9ea8d197d3cd4a944ed226fcb5fa9e6a0f0bb8602ba1cef5468c9753fe4d60"
+      url "https://github.com/shmileee/github-to-terraform/releases/download/v0.0.2/github-to-terraform_0.0.2_MacOS_x86_64.tar.gz"
+      sha256 "f2cdeb89e49c4e94337cf05d2bc486c03f7a30a09fd02e63b0446d322432263e"
+    end
+    if Hardware::CPU.arm?
+      url "https://github.com/shmileee/github-to-terraform/releases/download/v0.0.2/github-to-terraform_0.0.2_MacOS_arm64.tar.gz"
+      sha256 "77837e66cc4524f0629c1956d8d59cf3f869b4278d9c15386803fba44b8d12e0"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/shmileee/github-to-terraform/releases/download/v0.0.1/github-to-terraform_0.0.1_Linux_x86_64.tar.gz"
-      sha256 "91322d053cb3afadeb293029bae3f14e796f5345b2fd5b3990e44376cac87d0a"
+      url "https://github.com/shmileee/github-to-terraform/releases/download/v0.0.2/github-to-terraform_0.0.2_Linux_x86_64.tar.gz"
+      sha256 "a92014f24d176d729ba1ff2bff901a662c8cd98bca59101e93b69ff65a7efe7b"
+    end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/shmileee/github-to-terraform/releases/download/v0.0.2/github-to-terraform_0.0.2_Linux_arm64.tar.gz"
+      sha256 "39ef69f6c4bc8e955805e18567b57864a7878e56d0e6a94ed2397de8af4cb3ac"
     end
   end
 

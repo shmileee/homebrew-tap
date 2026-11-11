@@ -25,6 +25,10 @@ A Dynamic-Island-style panel for the MacBook notch, with FireHydrant on-call and
 brew install --cask shmileee/tap/notch-assistant
 ```
 
+If installing into `/Applications` needs an admin password on your Mac, install into your own
+Applications folder instead: add `--appdir ~/Applications`, or set it for every cask with
+`export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"`.
+
 The app is ad-hoc signed, so the cask removes the quarantine attribute after installation. Turn on
 "Open at login" in its Settings. `brew uninstall --zap` also removes the login item and its settings.
 

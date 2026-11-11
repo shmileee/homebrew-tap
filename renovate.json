@@ -5,8 +5,8 @@
   "customManagers": [
     {
       "customType": "regex",
-      "description": "Update the Alacritty cask version and DMG checksum",
-      "managerFilePatterns": ["/^Casks/alacritty\\.rb$/"],
+      "description": "Update a cask's version and checksum from its release",
+      "managerFilePatterns": ["/^Casks/.+\\.rb$/"],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n\\s*version \\\"(?<currentValue>[^\\\"]+)\\\"\\n\\s*sha256 \\\"(?<currentDigest>[a-f0-9]{64})\\\""
       ],
@@ -19,6 +19,12 @@
       "transformTemplates": [
         "{\"releases\": $map($[draft = false and prerelease = false], function($release) {($tag := $release.tag_name; $asset := $release.assets[name = (\"Alacritty-\" & $tag & \".dmg\")][0]; $asset ? {\"version\": $substring($tag, 1), \"releaseTimestamp\": $release.published_at, \"changelogUrl\": $release.html_url, \"sourceUrl\": \"https://github.com/alacritty/alacritty\", \"digest\": $asset.digest ? $substringAfter($asset.digest, \"sha256:\") : undefined})})}"
       ]
+    },
+    "notch-assistant-releases": {
+      "defaultRegistryUrlTemplate": "https://api.github.com/repos/{{packageName}}/releases?per_page=100",
+      "transformTemplates": [
+        "{\"releases\": $map($[draft = false and prerelease = false], function($release) {($tag := $release.tag_name; $asset := $release.assets[name = (\"NotchAssistant-\" & $substring($tag, 1) & \"-arm64.zip\")][0]; $asset ? {\"version\": $substring($tag, 1), \"releaseTimestamp\": $release.published_at, \"changelogUrl\": $release.html_url, \"sourceUrl\": \"https://github.com/shmileee/notch-assistant\", \"digest\": $asset.digest ? $substringAfter($asset.digest, \"sha256:\") : undefined})})}"
+      ]
     }
   },
   "packageRules": [
@@ -28,6 +34,14 @@
       "semanticCommitType": "chore",
       "semanticCommitScope": "alacritty",
       "commitMessageTopic": "Alacritty cask",
+      "labels": ["dependencies"]
+    },
+    {
+      "matchManagers": ["custom.regex"],
+      "matchDepNames": ["shmileee/notch-assistant"],
+      "semanticCommitType": "chore",
+      "semanticCommitScope": "notch-assistant",
+      "commitMessageTopic": "Notch Assistant cask",
       "labels": ["dependencies"]
     }
   ]

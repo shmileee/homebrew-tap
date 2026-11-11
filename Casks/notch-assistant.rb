@@ -1,7 +1,7 @@
 cask "notch-assistant" do
   # renovate: datasource=custom.notch-assistant-releases depName=shmileee/notch-assistant
-  version "0.1.0"
-  sha256 "03faa9fe1978a357e091de0e5806dfced224108fc23dc92395b0c74f40d51247"
+  version "0.1.1"
+  sha256 "fd561f30b495c12b5ad6a81392d9362c0560ced2baa2d27ff7c8ecc95841b60a"
 
   url "https://github.com/shmileee/notch-assistant/releases/download/v#{version}/NotchAssistant-#{version}-arm64.zip"
   name "Notch Assistant"

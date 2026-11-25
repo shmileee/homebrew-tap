@@ -1,7 +1,7 @@
 cask "notch-assistant" do
   # renovate: datasource=custom.notch-assistant-releases depName=shmileee/notch-assistant
-  version "0.1.2"
-  sha256 "c4f4109d4abe85f455a53cd5a735347fdf047db452e3415cebf35b83a38085a7"
+  version "0.2.0"
+  sha256 "0113633c6b8b8e1c3c55ee373758f7d7c82ff74346880156bba87101cca47190"
 
   url "https://github.com/shmileee/notch-assistant/releases/download/v#{version}/NotchAssistant-#{version}-arm64.zip"
   name "Notch Assistant"
@@ -27,7 +27,7 @@ cask "notch-assistant" do
 
   uninstall quit: "io.github.shmileee.notch-assistant"
 
-  # The API key stays in the Keychain (service "notch-assistant"); remove it in Settings first.
+  # API keys and tokens stay in the Keychain (service "notch-assistant"); remove them in Settings first.
   zap script: {
         executable:   "#{appdir}/Notch Assistant.app/Contents/MacOS/notch-assistant",
         args:         ["--login", "off"],

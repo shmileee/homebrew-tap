@@ -1,7 +1,7 @@
 cask "notch-assistant" do
   # renovate: datasource=custom.notch-assistant-releases depName=shmileee/notch-assistant
-  version "0.5.0"
-  sha256 "e5b7bd6cf9b4191926206b56cc57e1fa880b9b7ade09169493f1a133a5513123"
+  version "0.5.1"
+  sha256 "09e636a207b09ccc1fe1fb0b70195702b9c4ecf41efba23e0c17b08234ab12f6"
 
   url "https://github.com/shmileee/notch-assistant/releases/download/v#{version}/NotchAssistant-#{version}-arm64.zip"
   name "Notch Assistant"
@@ -18,7 +18,7 @@ cask "notch-assistant" do
 
   app "Notch Assistant.app"
 
-  # Ad-hoc signed, not notarized.
+  # Signed with the project's own certificate, not notarized.
   postflight_steps do
     run "/usr/bin/xattr",
         args:         ["-dr", "com.apple.quarantine", "{{appdir}}/Notch Assistant.app"],
